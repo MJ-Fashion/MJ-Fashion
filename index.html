@@ -23,6 +23,11 @@
         </nav>
     </header>
 
+    <!-- Cart Icon -->
+    <div class="cart-icon">
+        <a href="cart.html"><span id="cart-count">0</span> Items in Cart</a>
+    </div>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-text">
@@ -35,23 +40,23 @@
     <section id="shop" class="products">
         <h2>Featured Products</h2>
         <div class="product-grid">
-            <div class="product">
+            <div class="product" data-id="1">
                 <img src="sunglass1.jpg" alt="Sunglass 1">
                 <h3>Cool Sunglass 1</h3>
                 <p>$99.99</p>
-                <button class="btn add-to-cart">Add to Cart</button>
+                <button class="btn add-to-cart" data-name="Cool Sunglass 1" data-price="99.99">Add to Cart</button>
             </div>
-            <div class="product">
+            <div class="product" data-id="2">
                 <img src="sunglass2.jpg" alt="Sunglass 2">
                 <h3>Cool Sunglass 2</h3>
                 <p>$89.99</p>
-                <button class="btn add-to-cart">Add to Cart</button>
+                <button class="btn add-to-cart" data-name="Cool Sunglass 2" data-price="89.99">Add to Cart</button>
             </div>
-            <div class="product">
+            <div class="product" data-id="3">
                 <img src="sunglass3.jpg" alt="Sunglass 3">
                 <h3>Cool Sunglass 3</h3>
                 <p>$120.00</p>
-                <button class="btn add-to-cart">Add to Cart</button>
+                <button class="btn add-to-cart" data-name="Cool Sunglass 3" data-price="120.00">Add to Cart</button>
             </div>
         </div>
         <a href="shop.html" class="cta-btn">View All Products</a>
