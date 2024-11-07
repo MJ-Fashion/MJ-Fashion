@@ -15,14 +15,16 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#shop">Shop</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">View All Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Checkout Form Section -->
+    <!-- Checkout Section -->
     <section id="checkout" class="checkout">
         <h2>Checkout</h2>
 
@@ -36,13 +38,15 @@
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="card">Credit Card Information:</label>
-            <input type="text" id="card" name="card" required>
-
-            <button type="submit" class="cta-btn">Place Order</button>
+            <button type="submit" class="cta-btn">Confirm Order</button>
         </form>
 
         <div id="checkout-response"></div>
+
+        <!-- WhatsApp Chat Button -->
+        <div id="whatsapp-btn-container" style="display:none;">
+            <a href="#" id="whatsapp-btn" class="cta-btn" target="_blank">Chat with us on WhatsApp</a>
+        </div>
     </section>
 
     <script src="checkout.js"></script>
