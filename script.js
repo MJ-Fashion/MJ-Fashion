@@ -1,12 +1,21 @@
-// Example JavaScript for basic interactivity (e.g., adding items to cart, form validation)
-// This is just a placeholder script, you can add more features as needed.
-
 document.addEventListener('DOMContentLoaded', function () {
-    const addToCartBtns = document.querySelectorAll('.btn');
+
+    // Handle the "Add to Cart" button click
+    const addToCartBtns = document.querySelectorAll('.add-to-cart');
     
     addToCartBtns.forEach(button => {
-        button.addEventListener('click', function (e) {
+        button.addEventListener('click', function () {
             alert('Added to Cart!');
         });
+    });
+
+    // Contact Form Submission (Basic Simulation)
+    const contactForm = document.getElementById('contact-form');
+    const formResponse = document.getElementById('form-response');
+    
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();  // Prevent actual form submission
+        formResponse.innerHTML = `<p>Thank you for your message! We will get back to you soon.</p>`;
+        contactForm.reset();
     });
 });
