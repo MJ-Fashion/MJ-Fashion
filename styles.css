@@ -69,12 +69,12 @@ button:hover {
     background-color: #555;
 }
 
-#items-container ul {
+#clothing-items ul {
     list-style-type: none;
     padding: 0;
 }
 
-#items-container li {
+#clothing-items li {
     background-color: #f8f8f8;
     margin-bottom: 10px;
     padding: 10px;
@@ -83,13 +83,13 @@ button:hover {
     align-items: center;
 }
 
-#items-container button {
+#clothing-items button {
     background-color: red;
     color: white;
     border: none;
     cursor: pointer;
 }
 
-#items-container button:hover {
+#clothing-items button:hover {
     background-color: darkred;
 }
