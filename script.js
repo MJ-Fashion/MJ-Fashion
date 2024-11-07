@@ -7,21 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const editPriceInput = document.getElementById('edit-price');
 
     const adminPassword = "admin123";  // Hardcoded password for simplicity
-    let products = JSON.parse(localStorage.getItem('products')) || [
-        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+1", price: 20 },
-        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+2", price: 25 },
-        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+3", price: 30 },
-        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+4", price: 35 },
-        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+5", price: 40 },
-        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+6", price: 45 },
-        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+7", price: 50 },
-        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+8", price: 55 },
-        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+9", price: 60 }
-    ];
+    let products = JSON.parse(localStorage.getItem('products')) || [];
 
     let isAdmin = false;
 
-    // Check if admin is already authenticated in localStorage
+    // Check if admin is already authenticated
     if (localStorage.getItem("isAdmin") === "true") {
         isAdmin = true;
     } else {
@@ -29,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const password = prompt("Please enter the admin password:");
         if (password === adminPassword) {
             isAdmin = true;
-            localStorage.setItem("isAdmin", "true");  // Store admin authentication in localStorage
+            localStorage.setItem("isAdmin", "true");  // Store admin status in localStorage
         }
     }
 
@@ -44,12 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>Price: $<span class="price">${product.price}</span></p>
             `;
 
-            // Only show the "Edit" button if the user is the admin
+            // Only show the "Edit" button if the user is admin
             if (isAdmin) {
                 const editButton = document.createElement('button');
                 editButton.textContent = "Edit";
                 editButton.dataset.index = index;
-                editButton.classList.add("edit-btn");
                 productDiv.appendChild(editButton);
 
                 editButton.addEventListener('click', (e) => {
@@ -78,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 const base64Image = reader.result;
-                // Show image preview
+                // Show image preview (optional)
                 const imgPreview = document.createElement('img');
                 imgPreview.src = base64Image;
                 imgPreview.style.width = '100px';
@@ -107,6 +96,17 @@ document.addEventListener("DOMContentLoaded", () => {
         editModal.style.display = 'none';
         displayProducts();
     });
+
+    // Initialize product data if empty (first-time setup)
+    if (products.length === 0) {
+        for (let i = 0; i < 10; i++) {
+            products.push({
+                imageUrl: "https://via.placeholder.com/200?text=Cloth+" + (i + 1),
+                price: (i + 1) * 10
+            });
+        }
+        localStorage.setItem('products', JSON.stringify(products)); // Save to localStorage
+    }
 
     // Initial display
     displayProducts();
