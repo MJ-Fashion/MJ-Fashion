@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>Admin Panel - Add Clothing Item</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Admin Panel - Add Clothing</h1>
+        <h1>Admin Panel</h1>
         <nav>
             <a href="index.html">Back to Store</a>
         </nav>
     </header>
 
     <main>
-        <section id="add-item-form">
+        <section id="admin-login">
+            <h2>Admin Login</h2>
+            <input type="password" id="admin-password" placeholder="Enter password">
+            <button id="login-button">Login</button>
+        </section>
+
+        <section id="add-item-form" style="display:none;">
             <h2>Add New Clothing Item</h2>
             <form id="add-item">
                 <label for="item-name">Item Name:</label>
@@ -29,14 +35,6 @@
 
                 <button type="submit">Add Item</button>
             </form>
-            <button id="add-more">Add More Items</button>
-        </section>
-
-        <section id="item-list">
-            <h2>Existing Clothing Items</h2>
-            <div id="existing-items">
-                <!-- Existing items will be shown here -->
-            </div>
         </section>
     </main>
 
