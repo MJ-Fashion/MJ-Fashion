@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const editImageInput = document.getElementById('edit-image');
     const editPriceInput = document.getElementById('edit-price');
 
+    const adminPassword = "admin123";  // Hardcoded password for simplicity
     let products = JSON.parse(localStorage.getItem('products')) || [
         { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+1", price: 20 },
         { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+2", price: 25 },
@@ -15,9 +16,22 @@ document.addEventListener("DOMContentLoaded", () => {
         { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+6", price: 45 },
         { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+7", price: 50 },
         { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+8", price: 55 },
-        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+9", price: 60 },
-        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+10", price: 65 }
+        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+9", price: 60 }
     ];
+
+    let isAdmin = false;
+
+    // Check if admin is already authenticated in localStorage
+    if (localStorage.getItem("isAdmin") === "true") {
+        isAdmin = true;
+    } else {
+        // Ask for admin password if not authenticated
+        const password = prompt("Please enter the admin password:");
+        if (password === adminPassword) {
+            isAdmin = true;
+            localStorage.setItem("isAdmin", "true");  // Store admin authentication in localStorage
+        }
+    }
 
     // Function to display products
     const displayProducts = () => {
@@ -28,18 +42,23 @@ document.addEventListener("DOMContentLoaded", () => {
             productDiv.innerHTML = `
                 <img src="${product.imageUrl}" alt="Product Image">
                 <p>Price: $<span class="price">${product.price}</span></p>
-                <button data-index="${index}" class="edit-btn">Edit</button>
             `;
-            productContainer.appendChild(productDiv);
-        });
 
-        // Add event listeners to edit buttons
-        const editButtons = document.querySelectorAll('.edit-btn');
-        editButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = e.target.dataset.index;
-                openEditModal(index);
-            });
+            // Only show the "Edit" button if the user is the admin
+            if (isAdmin) {
+                const editButton = document.createElement('button');
+                editButton.textContent = "Edit";
+                editButton.dataset.index = index;
+                editButton.classList.add("edit-btn");
+                productDiv.appendChild(editButton);
+
+                editButton.addEventListener('click', (e) => {
+                    const index = e.target.dataset.index;
+                    openEditModal(index);
+                });
+            }
+
+            productContainer.appendChild(productDiv);
         });
     };
 
