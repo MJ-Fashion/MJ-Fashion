@@ -1,8 +1,8 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
 }
 
 header {
@@ -51,6 +51,17 @@ h1 {
 
 .product button:hover {
     background-color: #555;
+}
+
+.admin-section {
+    display: none;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.admin-section input, .admin-section button {
+    padding: 10px;
+    margin: 10px;
 }
 
 .modal {
