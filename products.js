@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 1,
             name: 'Aviator Sunglasses',
             price: 50.00,
-            image: 'images/aviator.jpg',
+            image: '1.jpg',
             description: 'Classic aviator sunglasses for a stylish look.',
         },
         {
