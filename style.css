@@ -2,56 +2,73 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    text-align: center;
+    background-color: #f4f4f4;
 }
 
 header {
     background-color: #333;
     color: white;
-    padding: 20px 0;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
 }
 
 #clothing-items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 }
 
 .item {
-    margin: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
     padding: 15px;
-    border: 1px solid #ccc;
     text-align: center;
-    width: 250px;
 }
 
 .item img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
-    max-height: 200px;
-    object-fit: cover;
+}
+
+#add-item-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#add-item input,
+#add-item button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
 }
 
 button {
     background-color: #333;
     color: white;
-    padding: 10px;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
     background-color: #555;
-}
-
-input[type="text"], input[type="file"] {
-    margin: 10px 0;
-    padding: 10px;
-    width: 80%;
-}
-
-#logout {
-    margin-top: 20px;
-    background-color: red;
 }
