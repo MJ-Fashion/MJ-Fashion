@@ -104,4 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if the user is already admin
     if (localStorage.getItem("isAdmin") === "true") {
         isAdmin = true;
-        adminSection.style
+        adminSection.style.display = "none";
+        displayProducts();
+    } else {
+        adminSection.style.display = "block";
+    }
+
+    // Initial display of products
+    displayProducts();
+});
