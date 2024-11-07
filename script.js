@@ -1,10 +1,10 @@
 // Sample credentials for admin login
 const adminCredentials = { username: 'admin', password: 'admin123' };
 
-// Retrieve clothing items from localStorage or initialize empty array if none exist
+// Retrieve clothing items from localStorage or initialize an empty array if not present
 let clothingItems = JSON.parse(localStorage.getItem('clothingItems')) || [];
 
-// Display clothing items on the main page
+// Function to display clothing items on the main page
 function displayItems() {
     const clothingContainer = document.getElementById('clothing-items');
     clothingContainer.innerHTML = ''; // Clear existing items
@@ -21,22 +21,22 @@ function displayItems() {
     });
 }
 
-// Admin login logic
+// Admin login functionality
 document.getElementById('login-button').addEventListener('click', function() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     if (username === adminCredentials.username && password === adminCredentials.password) {
-        // Login successful, show admin section
+        // Login successful, display the admin panel
         document.getElementById('login-section').style.display = 'none';
         document.getElementById('admin-section').style.display = 'block';
-        displayItemsForAdmin(); // Show existing items in admin panel
+        displayItemsForAdmin(); // Show items in the admin panel
     } else {
         alert('Incorrect username or password');
     }
 });
 
-// Display existing items in the admin panel with option to delete
+// Display items in the admin panel with the option to delete them
 function displayItemsForAdmin() {
     const itemsContainer = document.getElementById('items-container');
     itemsContainer.innerHTML = ''; // Clear existing items in admin panel
@@ -51,38 +51,37 @@ function displayItemsForAdmin() {
     });
 }
 
-// Add item to localStorage and update the admin panel
+// Add new item to localStorage and update the admin panel
 document.getElementById('add-item-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
     const name = document.getElementById('item-name').value;
     const price = document.getElementById('item-price').value;
-    const imageInput = document.getElementById('item-image');
-    const imageURL = imageInput.files[0] ? URL.createObjectURL(imageInput.files[0]) : 'images/default.jpg';
+    const image = document.getElementById('item-image').value;
 
-    const newItem = { name, price, image: imageURL };
+    const newItem = { name, price, image };
     clothingItems.push(newItem);
-    localStorage.setItem('clothingItems', JSON.stringify(clothingItems)); // Update localStorage
+    localStorage.setItem('clothingItems', JSON.stringify(clothingItems)); // Store updated list in localStorage
 
-    displayItemsForAdmin(); // Update admin panel with new item
-    displayItems(); // Update main page with new item
+    displayItemsForAdmin(); // Update the admin panel with the new item
+    displayItems(); // Update the main page with the new item
 });
 
 // Delete item from localStorage
 function deleteItem(index) {
-    clothingItems.splice(index, 1); // Remove item from array
+    clothingItems.splice(index, 1); // Remove item from the array
     localStorage.setItem('clothingItems', JSON.stringify(clothingItems)); // Update localStorage
 
-    displayItemsForAdmin(); // Update admin panel with new list
-    displayItems(); // Update main page with new list
+    displayItemsForAdmin(); // Update the admin panel with the new list
+    displayItems(); // Update the main page
 }
 
-// Initialize main page with clothing items
+// Ensure that the main page is populated with clothing items
 if (document.getElementById('clothing-items')) {
     displayItems();
 }
 
-// Initialize admin panel with clothing items if logged in
+// Ensure that the admin panel is populated with clothing items if logged in
 if (document.getElementById('items-container')) {
     displayItemsForAdmin();
 }
