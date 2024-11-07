@@ -2,9 +2,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartItemsContainer = document.getElementById('cart-items');
     const cartTotalContainer = document.getElementById('cart-total');
-    
+    const checkoutBtn = document.getElementById('checkout-btn');
+
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+        checkoutBtn.style.display = "none";  // Hide checkout button if the cart is empty
     } else {
         let total = 0;
         cart.forEach(item => {
