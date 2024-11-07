@@ -11,49 +11,56 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <h1>Sunglass Haven</h1>
+            <h1><a href="#">Sunglass Haven</a></h1>
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="hero-text">
             <h2>Find Your Perfect Pair of Sunglasses</h2>
-            <a href="#" class="cta-btn">Shop Now</a>
+            <a href="#shop" class="cta-btn">Shop Now</a>
         </div>
     </section>
 
     <!-- Featured Products -->
-    <section class="products">
+    <section id="shop" class="products">
         <h2>Featured Products</h2>
         <div class="product-grid">
             <div class="product">
                 <img src="sunglass1.jpg" alt="Sunglass 1">
                 <h3>Cool Sunglass 1</h3>
                 <p>$99.99</p>
-                <a href="#" class="btn">Add to Cart</a>
+                <button class="btn add-to-cart">Add to Cart</button>
             </div>
             <div class="product">
                 <img src="sunglass2.jpg" alt="Sunglass 2">
                 <h3>Cool Sunglass 2</h3>
                 <p>$89.99</p>
-                <a href="#" class="btn">Add to Cart</a>
+                <button class="btn add-to-cart">Add to Cart</button>
             </div>
             <div class="product">
                 <img src="sunglass3.jpg" alt="Sunglass 3">
                 <h3>Cool Sunglass 3</h3>
                 <p>$120.00</p>
-                <a href="#" class="btn">Add to Cart</a>
+                <button class="btn add-to-cart">Add to Cart</button>
             </div>
         </div>
+        <a href="shop.html" class="cta-btn">View All Products</a>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Founded in 2015, Sunglass Haven is dedicated to bringing you stylish, high-quality sunglasses at affordable prices. Whether you're lounging by the pool or cruising down the coast, our sunglasses will keep you looking cool and protected.</p>
     </section>
 
     <!-- Footer -->
@@ -69,9 +76,9 @@
     </footer>
 
     <!-- Contact Form Section -->
-    <section id="contact">
+    <section id="contact" class="contact">
         <h2>Contact Us</h2>
-        <form action="#" method="POST">
+        <form id="contact-form">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -83,6 +90,7 @@
 
             <button type="submit" class="cta-btn">Send Message</button>
         </form>
+        <div id="form-response"></div>
     </section>
 
     <script src="script.js"></script>
