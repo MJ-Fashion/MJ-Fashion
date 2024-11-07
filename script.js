@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Mock Clothing Items in LocalStorage
+    // Get clothing items from localStorage, or set default items
     let clothingItems = JSON.parse(localStorage.getItem('clothingItems')) || [
         { name: "T-Shirt", price: 20, image: 'images/default.jpg' },
         { name: "Jeans", price: 50, image: 'images/default.jpg' },
@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
         { name: "Cap", price: 15, image: 'images/default.jpg' }
     ];
 
-    // Display Clothing Items on the page
+    // Function to display clothing items dynamically
     function displayClothingItems() {
         const clothingContainer = document.getElementById('clothing-items');
-        clothingContainer.innerHTML = '';  // Clear any existing items
+        clothingContainer.innerHTML = '';  // Clear existing items
         clothingItems.forEach((item, index) => {
             const itemDiv = document.createElement('div');
             itemDiv.classList.add('item');
@@ -29,14 +29,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Admin Login
+    // Admin Login Logic
     const loginForm = document.getElementById('login-form');
     loginForm.addEventListener('submit', function (event) {
         event.preventDefault();
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        // Basic login validation
+        // Basic login check
         if (username === 'admin' && password === 'admin123') {
             document.getElementById('admin-login').style.display = 'none';
             document.getElementById('admin-dashboard').style.display = 'block';
@@ -45,48 +45,52 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Admin Logout
+    // Admin Logout Logic
     const logoutButton = document.getElementById('logout');
     logoutButton.addEventListener('click', function () {
         document.getElementById('admin-login').style.display = 'block';
         document.getElementById('admin-dashboard').style.display = 'none';
     });
 
-    // Edit an item
+    // Edit Clothing Item (when Edit button is clicked)
     window.editItem = function (index) {
         const item = clothingItems[index];
         document.getElementById('item-name').value = item.name;
         document.getElementById('item-price').value = item.price;
-        document.getElementById('item-image').value = ''; // Reset the file input
-        document.getElementById('item-image').dataset.index = index;
+        document.getElementById('item-image').value = ''; // Clear image input field
+        document.getElementById('item-image').dataset.index = index; // Save the index in data attribute
     };
 
-    // Update the clothing item (image and price)
+    // Update Clothing Item
     window.updateItem = function () {
         const name = document.getElementById('item-name').value;
         const price = parseFloat(document.getElementById('item-price').value);
         const imageInput = document.getElementById('item-image');
         const index = imageInput.dataset.index;
         
+        let imageURL = clothingItems[index].image;  // Default to existing image if no new image uploaded
+        
         // Handle image upload
-        let imageURL = clothingItems[index].image;  // Default to existing image
         if (imageInput.files && imageInput.files[0]) {
             const reader = new FileReader();
             reader.onload = function (e) {
-                imageURL = e.target.result;
-                clothingItems[index] = { name, price, image: imageURL };
-                localStorage.setItem('clothingItems', JSON.stringify(clothingItems));
-                displayClothingItems();  // Refresh the clothing items display
+                imageURL = e.target.result; // Base64 encoded image
+                updateClothingItem(index, name, price, imageURL);
             };
             reader.readAsDataURL(imageInput.files[0]);
         } else {
-            // No image change, just update name and price
-            clothingItems[index] = { name, price, image: imageURL };
-            localStorage.setItem('clothingItems', JSON.stringify(clothingItems));
-            displayClothingItems();
+            // If no image is uploaded, only update the name and price
+            updateClothingItem(index, name, price, imageURL);
         }
     };
 
-    // Initial load
+    // Helper function to update the clothing item in the array and localStorage
+    function updateClothingItem(index, name, price, imageURL) {
+        clothingItems[index] = { name, price, image: imageURL };
+        localStorage.setItem('clothingItems', JSON.stringify(clothingItems));
+        displayClothingItems();  // Refresh the clothing items on the page
+    }
+
+    // Initial display of clothing items
     displayClothingItems();
 });
