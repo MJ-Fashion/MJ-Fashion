@@ -3,41 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clothing Store</title>
-    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sunglass Haven</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- Main Header -->
+    <!-- Header -->
     <header>
-        <h1>Clothing Store</h1>
+        <div class="logo">
+            <h1>Sunglass Haven</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Display Products -->
-    <div id="product-container" class="product-container">
-        <!-- Products will be dynamically inserted here -->
-    </div>
-
-    <!-- Admin Section -->
-    <div id="admin-section" class="admin-section">
-        <h2>Admin Panel</h2>
-        <label for="admin-password">Enter Admin Password: </label>
-        <input type="password" id="admin-password" placeholder="Password">
-        <button id="login-btn">Login</button>
-    </div>
-
-    <!-- Edit Product Modal -->
-    <div id="edit-modal" class="modal">
-        <div class="modal-content">
-            <span id="close-modal" class="close">&times;</span>
-            <h2>Edit Product</h2>
-            <label for="edit-image">Upload Image:</label>
-            <input type="file" id="edit-image" accept="image/*">
-            <label for="edit-price">Price:</label>
-            <input type="number" id="edit-price" placeholder="Enter price">
-            <button id="save-changes">Save Changes</button>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Find Your Perfect Pair of Sunglasses</h2>
+            <a href="#" class="cta-btn">Shop Now</a>
         </div>
-    </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="sunglass1.jpg" alt="Sunglass 1">
+                <h3>Cool Sunglass 1</h3>
+                <p>$99.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+            <div class="product">
+                <img src="sunglass2.jpg" alt="Sunglass 2">
+                <h3>Cool Sunglass 2</h3>
+                <p>$89.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+            <div class="product">
+                <img src="sunglass3.jpg" alt="Sunglass 3">
+                <h3>Cool Sunglass 3</h3>
+                <p>$120.00</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Sunglass Haven</p>
+            <ul class="social-links">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Twitter</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Contact Form Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="#" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit" class="cta-btn">Send Message</button>
+        </form>
+    </section>
 
     <script src="script.js"></script>
 </body>
