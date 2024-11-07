@@ -1,15 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
-
-    // Handle the "Add to Cart" button click
+    // Add item to cart
     const addToCartBtns = document.querySelectorAll('.add-to-cart');
     
     addToCartBtns.forEach(button => {
         button.addEventListener('click', function () {
-            alert('Added to Cart!');
+            const productName = button.getAttribute('data-name');
+            const productPrice = parseFloat(button.getAttribute('data-price'));
+            addItemToCart(productName, productPrice);
         });
     });
 
-    // Contact Form Submission (Basic Simulation)
+    // Update cart icon count on page load
+    updateCartCount();
+
+    // Handle Contact Form submission (simulated)
     const contactForm = document.getElementById('contact-form');
     const formResponse = document.getElementById('form-response');
     
@@ -19,3 +23,32 @@ document.addEventListener('DOMContentLoaded', function () {
         contactForm.reset();
     });
 });
+
+// Function to add items to cart in localStorage
+function addItemToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const itemIndex = cart.findIndex(item => item.name === name);
+    
+    if (itemIndex === -1) {
+        // Item not in cart, add it
+        cart.push({ name, price, quantity: 1 });
+    } else {
+        // Item exists, update quantity
+        cart[itemIndex].quantity += 1;
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+}
+
+// Function to update cart count
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalItems = 0;
+    
+    cart.forEach(item => {
+        totalItems += item.quantity;
+    });
+
+    document.getElementById('cart-count').textContent = totalItems;
+}
