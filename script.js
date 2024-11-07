@@ -84,6 +84,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
+    // Remove Image
+    window.removeImage = function () {
+        const imageInput = document.getElementById('item-image');
+        const index = imageInput.dataset.index;
+        // Reset to the default image
+        const defaultImage = 'images/default.jpg'; 
+        updateClothingItem(index, clothingItems[index].name, clothingItems[index].price, defaultImage);
+    };
+
     // Helper function to update the clothing item in the array and localStorage
     function updateClothingItem(index, name, price, imageURL) {
         clothingItems[index] = { name, price, image: imageURL };
