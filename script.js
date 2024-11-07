@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
         { name: "Cap", price: 15, image: 'images/default.jpg' }
     ];
 
+    let isAdminLoggedIn = false;  // Flag to track if admin is logged in
+
     // Function to display all clothing items on the page
     function displayClothingItems() {
         const clothingContainer = document.getElementById('clothing-items');
@@ -23,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <img src="${item.image}" alt="${item.name}">
                 <h3>${item.name}</h3>
                 <p>Price: $${item.price}</p>
-                <button onclick="editItem(${index})">Edit</button>
+                ${isAdminLoggedIn ? `<button onclick="editItem(${index})">Edit</button>` : ''}
             `;
             clothingContainer.appendChild(itemDiv);
         });
@@ -38,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Basic login validation
         if (username === 'admin' && password === 'admin123') {
+            isAdminLoggedIn = true;
             document.getElementById('admin-login').style.display = 'none';
             document.getElementById('admin-dashboard').style.display = 'block';
             displayAdminForm();  // Display the admin form for all items
@@ -49,11 +52,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Admin logout functionality
     const logoutButton = document.getElementById('logout');
     logoutButton.addEventListener('click', function () {
+        isAdminLoggedIn = false;
         document.getElementById('admin-login').style.display = 'block';
         document.getElementById('admin-dashboard').style.display = 'none';
+        displayClothingItems();  // Refresh public items without the edit button
     });
 
-    // Function to display the editable form for each item
+    // Function to display the editable form for each item (Admin only)
     function displayAdminForm() {
         const updateForm = document.getElementById('update-form');
         updateForm.innerHTML = '';  // Clear any existing form
