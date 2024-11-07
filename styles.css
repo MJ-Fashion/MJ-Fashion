@@ -264,3 +264,22 @@ footer .social-links li a {
 .add-to-cart:hover {
     background-color: #218838;
 }
+
+#whatsapp-btn-container {
+    margin-top: 20px;
+}
+
+#whatsapp-btn {
+    background-color: #25D366;  /* WhatsApp green color */
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+#whatsapp-btn:hover {
+    background-color: #128C7E; /* Darker green for hover effect */
+}
