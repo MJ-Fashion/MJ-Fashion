@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
         { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+6", price: 45 },
         { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+7", price: 50 },
         { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+8", price: 55 },
-        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+9", price: 60 }
+        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+9", price: 60 },
+        { imageUrl: "https://via.placeholder.com/200x200?text=Cloth+10", price: 65 }
     ];
 
     // Function to display products
