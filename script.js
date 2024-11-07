@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Open the edit modal to edit product details
     function openEditModal(index) {
         const product = products[index];
-        editImageInput.value = "";
+        editImageInput.value = "";  // Reset file input
         editPriceInput.value = product.price;
         saveChangesButton.dataset.index = index;
         editModal.style.display = "block";
@@ -86,9 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 displayProducts();
                 editModal.style.display = "none";
             };
-            reader.readAsDataURL(newImage);
+            reader.readAsDataURL(newImage); // Convert image to base64
         } else {
-            // If no new image is uploaded, only update the price
+            // If no new image is uploaded, just update the price
             products[index].price = newPrice;
             localStorage.setItem("products", JSON.stringify(products));
             displayProducts();
