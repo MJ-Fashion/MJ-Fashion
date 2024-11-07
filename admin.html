@@ -9,9 +9,6 @@
 <body>
     <header>
         <h1>Admin Panel</h1>
-        <nav>
-            <a href="index.html">Back to Store</a>
-        </nav>
     </header>
 
     <main>
@@ -23,7 +20,7 @@
         </section>
 
         <section id="admin-section" style="display:none;">
-            <h2>Add, Edit or Delete Items</h2>
+            <h2>Manage Clothing Items</h2>
             <form id="add-item-form">
                 <label for="item-name">Item Name:</label>
                 <input type="text" id="item-name" required>
@@ -31,8 +28,8 @@
                 <label for="item-price">Price ($):</label>
                 <input type="number" id="item-price" required>
 
-                <label for="item-image">Image:</label>
-                <input type="file" id="item-image" accept="image/*">
+                <label for="item-image">Image URL:</label>
+                <input type="url" id="item-image" placeholder="Enter image URL" required>
 
                 <button type="submit">Add Item</button>
             </form>
