@@ -45,11 +45,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // Open the edit modal
     const openEditModal = (index) => {
         const product = products[index];
-        editImageInput.value = product.imageUrl;
+        editImageInput.value = '';  // Clear previous value
         editPriceInput.value = product.price;
         saveChangesButton.dataset.index = index;
         editModal.style.display = 'block';
     };
+
+    // Handle image file upload
+    editImageInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const base64Image = reader.result;
+                // Show image preview
+                const imgPreview = document.createElement('img');
+                imgPreview.src = base64Image;
+                imgPreview.style.width = '100px';
+                imgPreview.style.height = 'auto';
+                document.querySelector('.modal-content').appendChild(imgPreview);
+            };
+            reader.readAsDataURL(file); // Convert image to base64
+        }
+    });
 
     // Close the edit modal
     closeModal.addEventListener('click', () => {
@@ -59,9 +77,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Save changes to the product
     saveChangesButton.addEventListener('click', () => {
         const index = saveChangesButton.dataset.index;
-        products[index].imageUrl = editImageInput.value;
+        const newImageUrl = editImageInput.files[0] ? editImageInput.files[0] : products[index].imageUrl;
+        products[index].imageUrl = newImageUrl;
         products[index].price = parseFloat(editPriceInput.value);
+
+        // Save updated products to localStorage
         localStorage.setItem('products', JSON.stringify(products));
+
         editModal.style.display = 'none';
         displayProducts();
     });
