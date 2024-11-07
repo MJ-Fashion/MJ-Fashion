@@ -1,3 +1,4 @@
+/* Reset and general styles */
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +11,7 @@ body {
     color: #333;
 }
 
+/* Header */
 header {
     background-color: #333;
     color: white;
@@ -25,6 +27,7 @@ header .logo h1 {
 nav ul {
     list-style: none;
     padding: 0;
+    margin-top: 20px;
 }
 
 nav ul li {
@@ -38,6 +41,11 @@ nav ul li a {
     font-size: 1.2em;
 }
 
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Hero Section */
 .hero {
     background: url('hero-bg.jpg') no-repeat center center/cover;
     height: 400px;
@@ -67,6 +75,7 @@ nav ul li a {
     background-color: #ff4500;
 }
 
+/* Products Section */
 .products {
     padding: 50px 20px;
     text-align: center;
@@ -120,30 +129,25 @@ nav ul li a {
     background-color: #555;
 }
 
-footer {
-    background-color: #333;
-    color: white;
+/* About Us Section */
+.about {
+    padding: 50px 20px;
+    background-color: #fff;
     text-align: center;
-    padding: 20px;
 }
 
-footer .social-links {
-    list-style: none;
-    padding: 0;
+.about h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
-footer .social-links li {
-    display: inline;
-    margin: 0 10px;
+.about p {
+    font-size: 1.2em;
+    margin-top: 20px;
 }
 
-footer .social-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.5em;
-}
-
-#contact {
+/* Contact Section */
+.contact {
     padding: 50px 20px;
     background-color: #fff;
     text-align: center;
@@ -168,10 +172,6 @@ footer .social-links li a {
     border-radius: 5px;
 }
 
-#contact textarea {
-    height: 150px;
-}
-
 #contact button {
     padding: 15px;
     background-color: #ff6347;
@@ -184,4 +184,28 @@ footer .social-links li a {
 
 #contact button:hover {
     background-color: #ff4500;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer .social-links {
+    list-style: none;
+    padding: 0;
+}
+
+footer .social-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer .social-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
 }
