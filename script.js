@@ -1,15 +1,15 @@
-// Predefined admin password
-const adminPassword = 'admin123';
+// Sample credentials
+const adminCredentials = { username: 'admin', password: 'admin123' };
 
-// Retrieve clothing items from localStorage
+// Retrieve items from localStorage
 let clothingItems = JSON.parse(localStorage.getItem('clothingItems')) || [];
 
-// Function to display all clothing items
-function displayClothingItems() {
+// Display all items on the main page
+function displayItems() {
     const clothingContainer = document.getElementById('clothing-items');
-    clothingContainer.innerHTML = '';  // Clear current items
+    clothingContainer.innerHTML = '';
 
-    clothingItems.forEach(item => {
+    clothingItems.forEach((item, index) => {
         const itemDiv = document.createElement('div');
         itemDiv.classList.add('item');
         itemDiv.innerHTML = `
@@ -21,57 +21,66 @@ function displayClothingItems() {
     });
 }
 
-// Admin Login Logic
+// Admin login logic
 document.getElementById('login-button').addEventListener('click', function() {
-    const password = document.getElementById('admin-password').value;
-    
-    if (password === adminPassword) {
-        // Password is correct, show the add item form
-        document.getElementById('admin-login').style.display = 'none';
-        document.getElementById('add-item-form').style.display = 'block';
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === adminCredentials.username && password === adminCredentials.password) {
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('admin-section').style.display = 'block';
+        displayItemsForAdmin(); // Show items in admin panel
     } else {
-        alert('Incorrect password!');
+        alert('Incorrect username or password');
     }
 });
 
-// Handle adding new clothing item
-document.getElementById('add-item')?.addEventListener('submit', function(event) {
+// Display items for the admin to edit or delete
+function displayItemsForAdmin() {
+    const itemsContainer = document.getElementById('items-container');
+    itemsContainer.innerHTML = '';
+
+    clothingItems.forEach((item, index) => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <span>${item.name} - $${item.price}</span>
+            <button onclick="deleteItem(${index})">Delete</button>
+        `;
+        itemsContainer.appendChild(listItem);
+    });
+}
+
+// Add item to localStorage
+document.getElementById('add-item-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
     const name = document.getElementById('item-name').value;
     const price = document.getElementById('item-price').value;
     const imageInput = document.getElementById('item-image');
-    let imageURL = 'images/default.jpg';  // Default image if no image selected
+    const imageURL = imageInput.files[0] ? URL.createObjectURL(imageInput.files[0]) : 'images/default.jpg';
 
-    if (imageInput.files && imageInput.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            imageURL = e.target.result;  // Use the uploaded image
-            addItemToStorage(name, price, imageURL);
-        };
-        reader.readAsDataURL(imageInput.files[0]);  // Read image as base64
-    } else {
-        addItemToStorage(name, price, imageURL);  // Use default image if no file is selected
-    }
-});
-
-// Function to add item to localStorage and update the display
-function addItemToStorage(name, price, image) {
-    const newItem = { name, price, image };
+    const newItem = { name, price, image: imageURL };
     clothingItems.push(newItem);
     localStorage.setItem('clothingItems', JSON.stringify(clothingItems));
-    displayClothingItems();  // Update the clothing display on the main page
-    document.getElementById('item-name').value = '';
-    document.getElementById('item-price').value = '';
-    document.getElementById('item-image').value = '';
+
+    displayItemsForAdmin(); // Update the list in the admin panel
+    displayItems(); // Update the store page
+});
+
+// Delete item
+function deleteItem(index) {
+    clothingItems.splice(index, 1);
+    localStorage.setItem('clothingItems', JSON.stringify(clothingItems));
+    displayItemsForAdmin(); // Update the list in the admin panel
+    displayItems(); // Update the store page
 }
 
-// Display clothing items on the public page (index.html)
+// Display items on the main page when the user visits the store
 if (document.getElementById('clothing-items')) {
-    displayClothingItems();
+    displayItems();
 }
 
-// Ensure the admin panel is not visible until logged in
-if (document.getElementById('add-item-form')) {
-    displayClothingItems();
+// Display items in the admin panel when the user is logged in
+if (document.getElementById('items-container')) {
+    displayItemsForAdmin();
 }
