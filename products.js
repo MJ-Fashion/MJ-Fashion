@@ -12,21 +12,21 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 2,
             name: 'Round Sunglasses',
             price: 45.00,
-            image: 'images/round.jpg',
+            image: '1.jpg',
             description: 'Retro round sunglasses for the vintage vibe.',
         },
         {
             id: 3,
             name: 'Wayfarer Sunglasses',
             price: 55.00,
-            image: 'images/wayfarer.jpg',
+            image: '1.jpg',
             description: 'Iconic wayfarer sunglasses for everyday wear.',
         },
         {
             id: 4,
             name: 'Sports Sunglasses',
             price: 60.00,
-            image: 'images/sports.jpg',
+            image: '1.jpg',
             description: 'Perfect sunglasses for outdoor sports and activities.',
         }
     ];
