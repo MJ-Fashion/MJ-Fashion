@@ -54,8 +54,8 @@ footer {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#add-item input,
-#add-item button {
+#add-item-form input, 
+#add-item-form button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -71,4 +71,29 @@ button {
 
 button:hover {
     background-color: #555;
+}
+
+#items-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#items-container li {
+    background-color: #f8f8f8;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#items-container button {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#items-container button:hover {
+    background-color: darkred;
 }
