@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const name = document.getElementById(`item-name-${index}`).value;
         const price = parseFloat(document.getElementById(`item-price-${index}`).value);
         const imageInput = document.getElementById(`item-image-${index}`);
-        let imageURL = clothingItems[index].image;
+        let imageURL = clothingItems[index].image;  // Keep existing image if no new image is selected
 
         // Handle image upload
         if (imageInput.files && imageInput.files[0]) {
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 imageURL = e.target.result;  // Base64 encoded image
                 updateClothingItem(index, name, price, imageURL);
             };
-            reader.readAsDataURL(imageInput.files[0]);
+            reader.readAsDataURL(imageInput.files[0]);  // Trigger the read process for the file
         } else {
             // No new image uploaded, update name and price only
             updateClothingItem(index, name, price, imageURL);
@@ -100,14 +100,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to remove image for a clothing item
     window.removeImage = function (index) {
-        const defaultImage = 'images/default.jpg';
+        const defaultImage = 'images/default.jpg';  // Define the default image
         updateClothingItem(index, clothingItems[index].name, clothingItems[index].price, defaultImage);
     };
 
     // Helper function to update an item in the array and localStorage
     function updateClothingItem(index, name, price, imageURL) {
-        clothingItems[index] = { name, price, image: imageURL };
-        localStorage.setItem('clothingItems', JSON.stringify(clothingItems));
+        clothingItems[index] = { name, price, image: imageURL };  // Update the clothing item
+        localStorage.setItem('clothingItems', JSON.stringify(clothingItems));  // Save changes to localStorage
         displayClothingItems();  // Refresh the clothing items on the page
         displayAdminForm();  // Refresh the admin form with updated items
     }
