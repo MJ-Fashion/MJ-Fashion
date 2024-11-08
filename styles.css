@@ -289,3 +289,51 @@ footer .social-links li a {
 #whatsapp-btn:hover {
     background-color: #128C7E; /* Darker green for hover effect */
 }
+
+/* Contact Us Page Styles */
+#contact {
+    text-align: center;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.whatsapp-container {
+    margin-top: 20px;
+}
+
+.cta-btn {
+    background-color: #25D366; /* WhatsApp Green */
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #128C7E;
+}
+
+.whatsapp-icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.contact-info {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.contact-info a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
