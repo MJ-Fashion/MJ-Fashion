@@ -5,28 +5,28 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 1,
             name: 'Aviator Sunglasses',
             price: 50.00,
-            image: '1.jpg',
+            image: 'image2.jpg',
             description: 'Classic aviator sunglasses for a stylish look.',
         },
         {
             id: 2,
             name: 'Round Sunglasses',
             price: 45.00,
-            image: '1.jpg',
+            image: 'image2.jpg',
             description: 'Retro round sunglasses for the vintage vibe.',
         },
         {
             id: 3,
             name: 'Wayfarer Sunglasses',
             price: 55.00,
-            image: '1.jpg',
+            image: 'image2.jpg',
             description: 'Iconic wayfarer sunglasses for everyday wear.',
         },
         {
             id: 4,
             name: 'Sports Sunglasses',
             price: 60.00,
-            image: '1.jpg',
+            image: 'image2.jpg',
             description: 'Perfect sunglasses for outdoor sports and activities.',
         }
     ];
